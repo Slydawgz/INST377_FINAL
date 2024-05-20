@@ -76,6 +76,7 @@ app.get('/search_anime', async (req, res) => {
   }
 });
 
+
 app.get('/About', (req, res) => {
   res.render('About');
 });

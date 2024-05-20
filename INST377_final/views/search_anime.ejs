@@ -389,8 +389,18 @@ h3 {
         </form>
         <h2 style="text-align: center;">Search Results</h2>
 
-        <%= JSON.stringify(searchResults) %>
-
+        <div class="anime-list">
+            <div class="flex-container">
+                <% searchResults.forEach(anime => { %>
+                    <div class="anime-item">
+                        <% if (anime.title) { %>
+                            <h3><%= anime.title %></h3>
+                            <img src="<%= anime.images.jpg.image_url %>" alt="<%= anime.title %>">
+                        <% } %>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
 
 
             <!--Annyang Box-->
