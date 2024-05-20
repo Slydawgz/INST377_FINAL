@@ -426,83 +426,75 @@ h3 {
                 <p>We are here to help! If you encounter any issues or have any questions, please do not hesitate to reach out to us. Your feedback is invaluable, and we strive to improve your experience continuously.</p>
                 <p><b>Contact Information:</b></p>
                 
-                <p><b>Feedback:</b> <a href="{% url 'Contact_us'%}">Contact Us Form</a></p>
+                <p><b>Feedback:</b> <a href="/contact">Contact Us Form</a></p>
             </aside>
             <div style="clear: both;"></div>
         </div>
 
-            <!--Annyang Box-->
-            <div class="audio-navigation">
-                <br>
-                <h2>Enable your Mic to use our Audio Navigation feature!</h2>
-                <ul>
-                    <li>Load a Different Page</li>
-                        <ul>
-                            <li>Say: <strong>Navigate to [page]</strong></li>
-                            <li>Say: <strong>Search [anime]</strong> & then click the search button</li>
-                        </ul>
-                </ul>
+<!-- Annyang Box -->
+<div class="audio-navigation">
+    <br>
+    <h2>Enable your Mic to use our Audio Navigation feature!</h2>
+    <ul>
+        <li>Load a Different Page</li>
+        <ul>
+            <li>Say: <strong>Navigate to [page]</strong></li>
+            <li>Say: <strong>Search [anime]</strong> & then click the search button</li>
+        </ul>
+    </ul>
 
-                <button onclick="startAnnyang()">Turn On Listening</button>
-                <button onclick="stopAnnyang()">Turn Off Listening</button>
-            </div>
-        
+    <button onclick="startAnnyang()">Turn On Listening</button>
+    <button onclick="stopAnnyang()">Turn Off Listening</button>
+</div>
+</main>
 
-        <!--Annyang Library-->
-        <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
-        <script>
-            if(annyang) {
-                //Commands
-                var commands = {
-                    'Navigate to *page': changePage,
-                    'Search *anime': searchAnime
-                }
+<!-- Footer -->
+<footer id="footerSection">
+<p>© 2024 Anime Database. All rights reserved.</p>
+</footer>
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script>
+if (annyang) {
+    var commands = {
+        'Navigate to *page.': changePage,
+        'Search *anime': searchAnime
+    };
 
-                //Define functions
-                 function changePage(page) {
-                    if(page == 'home') {
-                        window.location.href = "Home.html"
-                    } else if (page == 'about') {
-                        window.location.href = "About.html"
-                    } else if (page == 'help') {
-                        window.location.href = "Help.html"
-                    } else if (page == 'contact us') {
-                        window.location.href = "Contact_us.html"
-                    }
+    function changePage(page) {
+        if (page == 'home') {
+            window.location.href = "/Home";
+        } else if (page == 'about') {
+            window.location.href = "/About";
+        } else if (page == 'help') {
+            window.location.href = "/Help";
+        } else if (page == 'contact us') {
+            window.location.href = "/Contact_us";
+        }
+    }
 
-                }
-                 
-                //function to look up the name of the anime
-                function searchAnime(anime) {
-                    var searchBox = document.getElementById('id_query');
-                    if (searchBox) {
-                        searchBox.value = anime;
-                    } else {
-                        console.error('Search box element not found.');
-                    }
-                }
+    function searchAnime(anime) {
+        // Assuming there's an input field with id 'id_query'
+        var searchBox = document.getElementById('id_query');
+        if (searchBox) {
+            searchBox.value = anime;
+        } else {
+            console.error('Search box element not found.');
+        }
+    }
 
-                //Add command
-                annyang.addCommands(commands);
+    annyang.addCommands(commands);
 
-                //Start listening
-                function startAnnyang() {
-                    annyang.start();
-                }
+    function startAnnyang() {
+        annyang.start();
+    }
 
-                //Stop listening
-                function stopAnnyang() {
-                    annyang.abort();
-                }
-
-            }
-        </script>
+    function stopAnnyang() {
+        annyang.abort();
+    }
+}
+</script>
     </main>
-
-    <!-- Footer -->
-    <footer id="footerSection">
-        <p>© 2024 Anime Database. All rights reserved. </p>
-    </footer>
     <!-- Scripts -->
     
     <script>

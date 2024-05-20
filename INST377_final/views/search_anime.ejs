@@ -445,12 +445,15 @@ h3 {
                 }
                  
                 //function to look up the name of the anime
-                function searchAnime(anime) {
-                    var searchBox = document.getElementById('id_query');
-                    if (searchBox) {
-                        searchBox.value = anime;
-                    } else {
-                        console.error('Search box element not found.');
+                function changePage(page) {
+                    if (page == 'home') {
+                        window.location.href = "/Home";
+                    } else if (page == 'about') {
+                        window.location.href = "/About";
+                    } else if (page == 'help') {
+                        window.location.href = "/Help";
+                    } else if (page == 'contact us') {
+                        window.location.href = "/Contact_us";
                     }
                 }
 
