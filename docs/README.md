@@ -6,4 +6,4 @@ Utilizing a database that stores the specific anime facts and pulls from the API
 ## Description of target browsers (iOS? Android? Which ones?)
 Desktop browsers (Opera, Firefox, Edge)
 ## Link to Developer Manual
-[Developer Manual]()
+[Developer Manual](https://github.com/Slydawgz/INST377_FINAL/blob/main/docs/dev_maunual.md)
