@@ -33,3 +33,7 @@
 * Enhance the search functionality with more filters.
 * Add additional anime-related data sources.
 * Add in features that are missing from redeveloping the app to Node
+# Link to old repository (Django)
+* [Django Repository](https://github.com/Slydawgz/INST377-Group-Project_Final)
+# Link to website
+* [Vercel Website](https://inst-377-final.vercel.app/)
