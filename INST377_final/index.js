@@ -70,14 +70,13 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Route to handle anime search
 app.get('/search_anime', async (req, res) => {
   try {
     const query = req.query.query;
     const apiUrl = `https://api.jikan.moe/v4/anime?q=${query}`;
 
     const response = await axios.get(apiUrl);
-    const searchResults = response.data.data; // Ensure to access the correct data structure
+    const searchResults = response.data.data;
     console.log('Search Results:', searchResults);
     res.render('search_anime', { searchResults });
   } catch (error) {
@@ -86,7 +85,6 @@ app.get('/search_anime', async (req, res) => {
   }
 });
 
-// Other routes
 app.get('/About', (req, res) => {
   res.render('About');
 });
