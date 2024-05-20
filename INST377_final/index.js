@@ -1,26 +1,21 @@
 const express = require('express');
-const path = require('path'); // Import the 'path' module
+const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
 app.set('views', path.join(__dirname, 'views'));
 const supabaseUrl = 'https://bfsqoukxpynbbcxuozyr.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmc3FvdWt4cHluYmJjeHVvenlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU3NjA3NTQsImV4cCI6MjAzMTMzNjc1NH0.aNpGGnO4w_90OL3iLR7H2OVWLLJeAIn5Izi1x4IN3H8'; // Replace with your Supabase key
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmc3FvdWt4cHluYmJjeHVvenlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU3NjA3NTQsImV4cCI6MjAzMTMzNjc1NH0.aNpGGnO4w_90OL3iLR7H2OVWLLJeAIn5Izi1x4IN3H8';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Middleware to serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Middleware to parse request bodies
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set the directory for views and the view engine
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Route to render the main page
 app.get('/', async (req, res) => {
   try {
     const [animeResponse, scoringResponse, top5Response] = await Promise.all([
@@ -66,14 +61,13 @@ app.get('/', async (req, res) => {
   }
 });
 
-// Route to handle anime search
 app.get('/search_anime', async (req, res) => {
   try {
     const query = req.query.query;
     const apiUrl = `https://api.jikan.moe/v4/anime?q=${query}`;
 
     const response = await axios.get(apiUrl);
-    const searchResults = response.data.data; // Ensure to access the correct data structure
+    const searchResults = response.data.data;
     console.log('Search Results:', searchResults);
     res.render('search_anime', { searchResults });
   } catch (error) {
@@ -82,7 +76,6 @@ app.get('/search_anime', async (req, res) => {
   }
 });
 
-// Other routes
 app.get('/About', (req, res) => {
   res.render('About');
 });
@@ -100,12 +93,10 @@ app.post('/submit-form', (req, res) => {
   res.render('Form_Submition', { formData });
 });
 
-// Start the server if not in production
 if (process.env.NODE_ENV !== 'production') {
   app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
   });
 }
 
-// Export the app for Vercel
 module.exports = app;
