@@ -8,7 +8,7 @@ const supabaseUrl = 'https://bfsqoukxpynbbcxuozyr.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmc3FvdWt4cHluYmJjeHVvenlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU3NjA3NTQsImV4cCI6MjAzMTMzNjc1NH0.aNpGGnO4w_90OL3iLR7H2OVWLLJeAIn5Izi1x4IN3H8'; // Replace with your Supabase key
 const supabase = createClient(supabaseUrl, supabaseKey);
 app.use(express.static('public'));
-
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
